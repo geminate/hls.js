@@ -697,6 +697,9 @@ class BufferController extends EventHandler {
     if (sb) {
       sb.ended = false;
       if (!sb.updating) {
+        if (sb.buffered.length === 0) {
+          return true;
+        }
         if (this.removeBufferRange(sbType, sb, startOffset, endOffset)) {
           this.flushBufferCounter++;
           return false;
